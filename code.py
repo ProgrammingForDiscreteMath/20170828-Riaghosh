@@ -1,4 +1,5 @@
-from math import sqrt
+from math import sqrt, atan, log
+
 class ComplexNumber:
     """
     The class of complex numbers.
@@ -9,6 +10,7 @@ class ComplexNumber:
         """
         self.real = real_part
         self.imaginary = imaginary_part
+
     def __repr__(self):
         """
         Return the string representation of self.
