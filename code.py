@@ -35,6 +35,24 @@ class ComplexNumber:
         Return the sum of ``self`` and ``other``.
         """
         return ComplexNumber(self.real + other.real, self.imaginary + other.imaginary)
+    
+    def product(self,other):
+        """
+        Return the product of ``self`` and ``other``.
+        """
+        return ComplexNumber(self.real*other.real - self.imaginary*other.imaginary, 
+                             self.imaginary*other.real + self.real*other.imaginary)
+    
+    def complex_conjugate(self):
+        """
+        Return the complex conjugate of ``self``.
+        The complex conjugate of a complex number is a complex number with real and imaginary parts
+        equal in magnitude to the original number but with a opposite sign in the imaginary part.
+        """
+        return ComplexNumber.__init__(self, self.real, - self.imaginary)
+        
+        
+        
 
 class NonZeroComplexNumber(ComplexNumber):
     def __init__(self, real_part, imaginary_part):
@@ -50,3 +68,19 @@ class NonZeroComplexNumber(ComplexNumber):
         """
         den = self.real**2 + self.imaginary**2
         return NonZeroComplexNumber(self.real/den, -self.imaginary/den)
+    
+    def polar_coordinates(self):
+        """
+        Return the polar coordinates of the complex number ``self``.
+        """
+        return (ComplexNumber.modulus(self),atan(self.imaginary/self.real))
+        
+    def logarithm(self):
+        """
+        Return the principal branch of a logarithm of a complex number. 
+        The logarithm of a complex number  ``z`` is defined as log(z) = log(mod(z)) + i*arg(z).
+        """
+        temp=self.polar_coordinates()
+        return ComplexNumber(log(temp[0]),temp[1])
+    
+    
